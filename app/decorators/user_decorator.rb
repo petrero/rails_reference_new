@@ -9,6 +9,34 @@ class UserDecorator < ApplicationDecorator
     site_link(model.full_name.present? ? model.full_name : model.username)
   end
   
+  def website
+    if model.url.present?
+      h.link_to model.url, model.url
+    else 
+      #'<span class="none">None given</span>'
+      h.content_tag :span, "None given", class: "none"
+    end
+  end
+  
+  
+  def twitter
+    if model.twitter_name.present?
+      h.link_to model.twitter_name, "http://twitter.com/#{model.twitter_name}"
+    else
+      #<span class="none">None given</span>
+      h.content_tag :span, "None given", class: "none"
+    end 
+  end
+  
+  def bio
+    if model.bio.present?
+      Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true).render(model.bio).html_safe
+    else
+      #'<span class="none">None given</span>'
+      h.content_tag :span, "None given", class: "none"
+    end
+  end
+  
   private
   def site_link(content)
     h.link_to_if model.url.present?, content, model.url

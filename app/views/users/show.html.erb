@@ -8,28 +8,18 @@
     <dd><%= @user.member_since %></dd>
     <dt>Website:</dt>
     <dd>
-    <% if @user.url.present? %>
-      <%= link_to @user.url, @user.url %>
-    <% else %>
-      <span class="none">None given</span>
-    <% end %>
+    <%= @user.website %>
+    
     </dd>
     <dt>Twitter:</dt>
     <dd>
-    <% if @user.twitter_name.present? %>
-      <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %>
-    <% else %>
-      <span class="none">None given</span>
-    <% end %>
+      <%= @user.twitter %>
+    
     </dd>
     <dt>Bio:</dt>
     <dd>
-    <% if @user.bio.present? %>
-      <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true) %>
-      <%= raw raw markdown.render(@user.bio) %>
-    <% else %>
-      <span class="none">None given</span>
-    <% end %>
+      <%= @user.bio %>
+    
     </dd>
   </dl>
 </div>
