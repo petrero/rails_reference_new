@@ -1,5 +1,6 @@
 class UserDecorator < ApplicationDecorator
   decorates :user
+  allows :username
 
   def avatar
     site_link h.image_tag("avatars/#{avatar_name}", class: "avatar")
