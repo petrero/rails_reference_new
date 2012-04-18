@@ -28,26 +28,30 @@ class UserDecorator < ApplicationDecorator
     end  
   end
   
+  def member_since
+    model.created_at.strftime("%B %e, %Y")
+  end
+  
   private
-  def site_link(content)
-    h.link_to_if model.url.present?, content, model.url
-  end
-  
-  def avatar_name
-     if model.avatar_image_name.present?
-      model.avatar_image_name
-    else
-      "default.png"
+    def site_link(content)
+      h.link_to_if model.url.present?, content, model.url
     end
-  end
-  
-  def handle_none(value)
-    if value.present?
-      yield
-    else
-      h.content_tag :span, "None given", class: "none"
+    
+    def avatar_name
+       if model.avatar_image_name.present?
+        model.avatar_image_name
+      else
+        "default.png"
+      end
     end
-  end
+    
+    def handle_none(value)
+      if value.present?
+        yield
+      else
+        h.content_tag :span, "None given", class: "none"
+      end
+    end
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
