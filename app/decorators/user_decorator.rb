@@ -2,14 +2,18 @@ class UserDecorator < ApplicationDecorator
   decorates :user
 
   def avatar
-    h.link_to_if model.url.present?, h.image_tag("avatars/#{avatar_name}", class: "avatar"), model.url
+    site_link h.image_tag("avatars/#{avatar_name}", class: "avatar")
   end
   
   def linked_name
-    h.link_to_if model.url.present?, (model.full_name.present? ? model.full_name : model.username), model.url
+    site_link(model.full_name.present? ? model.full_name : model.username)
   end
   
   private
+  def site_link(content)
+    h.link_to_if model.url.present?, content, model.url
+  end
+  
   def avatar_name
      if model.avatar_image_name.present?
       model.avatar_image_name
