@@ -1,6 +1,22 @@
 class UserDecorator < ApplicationDecorator
   decorates :user
 
+  def avatar
+    h.link_to_if model.url.present?, h.image_tag("avatars/#{avatar_name}", class: "avatar"), model.url
+  end
+  
+  def linked_name
+    h.link_to_if model.url.present?, (model.full_name.present? ? model.full_name : model.username), model.url
+  end
+  
+  private
+  def avatar_name
+     if model.avatar_image_name.present?
+      model.avatar_image_name
+    else
+      "default.png"
+    end
+  end
   # Accessing Helpers
   #   You can access any helper via a proxy
   #
