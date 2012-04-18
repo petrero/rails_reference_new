@@ -10,31 +10,22 @@ class UserDecorator < ApplicationDecorator
   end
   
   def website
-    if model.url.present?
+    handle_none model.url do
       h.link_to model.url, model.url
-    else 
-      #'<span class="none">None given</span>'
-      h.content_tag :span, "None given", class: "none"
     end
   end
   
   
   def twitter
-    if model.twitter_name.present?
+    handle_none model.twitter_name do
       h.link_to model.twitter_name, "http://twitter.com/#{model.twitter_name}"
-    else
-      #<span class="none">None given</span>
-      h.content_tag :span, "None given", class: "none"
     end 
   end
   
   def bio
-    if model.bio.present?
+    handle_none model.bio do
       Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true).render(model.bio).html_safe
-    else
-      #'<span class="none">None given</span>'
-      h.content_tag :span, "None given", class: "none"
-    end
+    end  
   end
   
   private
@@ -47,6 +38,14 @@ class UserDecorator < ApplicationDecorator
       model.avatar_image_name
     else
       "default.png"
+    end
+  end
+  
+  def handle_none(value)
+    if value.present?
+      yield
+    else
+      h.content_tag :span, "None given", class: "none"
     end
   end
   # Accessing Helpers
