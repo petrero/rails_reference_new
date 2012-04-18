@@ -24,7 +24,7 @@ class UserDecorator < ApplicationDecorator
   
   def bio
     handle_none model.bio do
-      Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true).render(model.bio).html_safe
+      markdown(model.bio)
     end  
   end
   
