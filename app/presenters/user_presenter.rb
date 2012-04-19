@@ -1,5 +1,6 @@
 class UserPresenter < BasePresenter
   presents :user
+  delegate :username, :to => :user
   
   def avatar
     site_link h.image_tag("avatars/#{avatar_name}", class: "avatar")
@@ -32,9 +33,6 @@ class UserPresenter < BasePresenter
     end
   end
   
-  def username
-    user.username
-  end
   
   private
     def site_link(content)
