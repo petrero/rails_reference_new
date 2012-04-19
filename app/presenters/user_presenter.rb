@@ -28,8 +28,7 @@ class UserPresenter < BasePresenter
   
   def bio
     handle_none(user.bio) do
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true)
-      markdown.render(user.bio).html_safe
+      markdown(user.bio)
     end
   end
   
