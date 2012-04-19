@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "ZipCodeLookup" do
-  it "show Beverly Hills given 90210", :vcr do  
+  it "show Beverly Hills given 90210", :vcr, record: :all do  
      visit root_path
      fill_in "zip_code", with: "90210"
      click_on "Lookup"
