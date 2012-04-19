@@ -23,6 +23,16 @@ end
 gem 'jquery-rails'
 gem 'savon'
 
+gem 'rspec-rails', group: [:test, :development]
+
+
+group :test do
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'vcr'
+  gem 'fakeweb'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
