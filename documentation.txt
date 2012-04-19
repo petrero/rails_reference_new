@@ -1,0 +1,5 @@
+http://savonrb.com
+
+related
+https://github.com/rubiii/savon_spec
+https://github.com/rubiii/savon_model

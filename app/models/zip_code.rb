@@ -2,6 +2,7 @@ class ZipCode
   attr_reader :state, :city, :area_code, :time_zone
   
   def initialize(zip)
+    Gyoku.convert_symbols_to :camelcase
     client = Savon::Client.new("http://webservicex.net/uszip.asmx?WSDL")
     response = client.request :web, :get_info_by_zip, body: {"USZip" => zip}
     if response.success?
