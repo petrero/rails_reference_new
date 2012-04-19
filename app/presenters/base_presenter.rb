@@ -11,11 +11,15 @@ class BasePresenter
   end
   
   def h
-    @template
+   @template
   end
   
   def markdown(text)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :hard_wrap => true, :filter_html => true, :autolink => true)
     markdown.render(text).html_safe
+  end
+  
+  def method_missing(*args, &block)
+    @template.send(*args, &block)
   end
 end
