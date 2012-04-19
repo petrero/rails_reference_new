@@ -1,6 +1,7 @@
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join("spec", "vcr")
   c.stub_with :fakeweb
+  c.filter_sensitive_data('<WSDL>') {"http://webservicex.net/uszip.asmx?WSDL"}
 end
 
 RSpec.configure do |c|
