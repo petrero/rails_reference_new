@@ -29,7 +29,7 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Thu, 19 Apr 2012 15:20:27 GMT
+      - Thu, 19 Apr 2012 15:27:33 GMT
     body:
       encoding: US-ASCII
       string: ! "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
@@ -246,7 +246,7 @@ http_interactions:
         \     <http:address location=\"http://webservicex.net/uszip.asmx\" />\r\n
         \   </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: '1.1'
-  recorded_at: Thu, 19 Apr 2012 15:20:26 GMT
+  recorded_at: Thu, 19 Apr 2012 15:27:34 GMT
 - request:
     method: post
     uri: http://webservicex.net/uszip.asmx
@@ -284,7 +284,7 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Thu, 19 Apr 2012 15:20:29 GMT
+      - Thu, 19 Apr 2012 15:27:35 GMT
     body:
       encoding: US-ASCII
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
@@ -292,5 +292,5 @@ http_interactions:
         xmlns="http://www.webserviceX.NET"><GetInfoByZIPResult><NewDataSet xmlns=""><Table><CITY>Beverly
         Hills</CITY><STATE>CA</STATE><ZIP>90210</ZIP><AREA_CODE>310</AREA_CODE><TIME_ZONE>P</TIME_ZONE></Table></NewDataSet></GetInfoByZIPResult></GetInfoByZIPResponse></soap:Body></soap:Envelope>
     http_version: '1.1'
-  recorded_at: Thu, 19 Apr 2012 15:20:28 GMT
+  recorded_at: Thu, 19 Apr 2012 15:27:35 GMT
 recorded_with: VCR 2.1.0
