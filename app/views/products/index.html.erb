@@ -13,3 +13,21 @@
   </div>
 <% end %>
 </div>
+
+
+<script type="text/html" id="product_template">
+  <div class="product">
+    <!-- <h2><%# link_to product.name, product %></h2> -->
+    <h2><a href= "/products/{{id}}">{{name}}</a></h2>
+    <div class="details">
+      <%# number_to_currency(product.price) %>
+      {{price}}
+      <!-- <%# if product.released_at %>
+        | Released <%# product.released_at.strftime("%B %e, %Y") %>
+      <%# end %> -->
+      {{#released_at}}
+        | Released {{released_at}}
+      {{/released_at}}
+    </div>
+  </div>
+</script>
