@@ -1,5 +1,7 @@
 <% content_for :title, @product ? @product.name : "Products" %>
 
+<title><%= yield(:title) %></title>
+
 <div class="template_time">Template random: <strong><%= rand(900)+100 %></strong></div>
 
 <h1>Products</h1>
