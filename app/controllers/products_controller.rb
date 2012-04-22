@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.order("name").limit(10)
+    respond_to do |format|
+      format.html
+      format.json {render json: @products}
+    end
   end
 
   def show
