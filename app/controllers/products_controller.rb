@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
     @products = @products.offset((params[:page].to_i-1)*10) if params[:page].present?
     respond_to do |format|
       format.html
-      format.json {render json: @products}
+      format.json do 
+        render json: @products.map {|p| view_context.product_for_mustache(p)}
+      end
     end
   end
 
