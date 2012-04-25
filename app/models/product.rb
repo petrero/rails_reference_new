@@ -8,3 +8,5 @@ class Product < ActiveRecord::Base
     Thread.current[:product_v8].eval("new Product(#{to_json})")
   end
 end
+
+
