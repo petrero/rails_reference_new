@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: @products.map { |p| view_context.product_for_mustache(p) }
+        render json: @products
       end
     end
   end
