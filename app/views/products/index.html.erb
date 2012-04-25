@@ -4,7 +4,7 @@
 
 <div id="products" data-json-url="<%= products_url(:format => :json) %>">
 <% @products.each do |product| %>
-  <%= render "product", :mustache => product.as_json %>
+  <%= render "product", :mustache => product.for_mustache %>
 <% end %>
 </div>
 <script type="text/html" id="product_template">
