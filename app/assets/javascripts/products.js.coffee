@@ -20,6 +20,7 @@ class ProductsPager
     $(window).scrollTop() > $(document).height() - $(window).height() - 50
     
   render: (products) =>
-    for product in products
+    for product_attributes in products
+      product = new Product(product_attributes)
       $('#products').append Mustache.to_html($('#product_template').html(), product)
     $(window).scroll(@check) if products.length > 0
