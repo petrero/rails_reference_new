@@ -12,6 +12,10 @@ Warden::Manager.serialize_from_session do |id|
 end
 
 Warden::Strategies.add(:password) do
+  def valid?
+    params['email'] &&  params['password']
+  end
+  
   def authenticate!
     user = User.find_by_email(params['email'])
     if user && user.authenticate(params['password'])
