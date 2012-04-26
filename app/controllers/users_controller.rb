@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
   def index
     @users = User.all
   end
@@ -26,11 +27,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to @user, notice: "Successfully updated user."
-    else
-      render :edit
-    end
+    @user.update_attributes(params[:user])
+    respond_with @user
   end
 
   def destroy
