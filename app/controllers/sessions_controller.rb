@@ -1,15 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    flash.now.alert = warden.message if warden.message.present?
   end
 
   def create
-    user = warden.authenticate
-    if user
-      redirect_to root_url, notice: "Logged in!"
-    else
-      flash.now.alert = warden.message
-      render "new"
-    end
+    warden.authenticate! 
+    redirect_to root_url, notice: "Logged in!"
   end
 
   def destroy
