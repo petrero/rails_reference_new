@@ -14,6 +14,19 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
   
+  def error_messages
+    if object.errors.full_messages.any?
+      @template.content_tag(:div, :class=> "error_messages") do
+        @template.content_tag(:h2, "Invalid Fields") +
+        @template.content_tag(:ul) do      
+          object.errors.full_messages.map do |msg|
+            @template.content_tag(:li, msg)
+          end.join.html_safe
+        end
+      end
+    end  
+  end
+  
   private
     def field_label(name, *args)
       options = args.extract_options!
