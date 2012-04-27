@@ -17,9 +17,13 @@ class Article < ActiveRecord::Base
   
   def self.search(params)
     tire.search(page: params[:page], per_page: 2) do
-      query { string params[:query], default_operator: "AND" } if params[:query].present?
-      filter :range, published_at: {lte: Time.zone.now }
-      filter :term, author_id: params[:author_id] if params[:author_id].present?
+      query do
+        boolean do
+          must { string params[:query], default_operator: "AND" } if params[:query].present?
+          must {range :published_at, lte: Time.zone.now }
+          must {term :author_id,  params[:author_id]} if params[:author_id].present?
+        end
+      end
       sort {by :published_at, "desc" } if params[:query].blank?
       facet "authors" do
         terms :author_id
