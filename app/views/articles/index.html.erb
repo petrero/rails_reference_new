@@ -7,6 +7,22 @@
   </p>
 <% end %>
 
+<div id="facets">
+  <h3>Authors</h3>
+  <ul>
+    <% @articles.facets['authors']['terms'].each do |facet| %>
+      <li>
+        <%= link_to_unless_current Author.find(facet['term']).name, params.merge(author_id: facet['term']) %>
+        <% if params[:author_id] == facet['term'].to_s %>
+          (<%= link_to "remove", author_id: nil %>)
+        <% else %>
+          (<%= facet['count'] %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <div id="articles">
 <% @articles.each do |article| %>
   <h2>
