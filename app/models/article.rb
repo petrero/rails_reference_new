@@ -5,6 +5,16 @@ class Article < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
   
+  mapping do
+    indexes :id, type: 'integer'
+    indexes :author_id, type: 'integer'
+    indexes :author_name
+    indexes :name, boost: 10
+    indexes :content#, analyzer: 'snowball'
+    indexes :published_at, type: 'date'
+    indexes :comments_size, type: 'integer'
+  end
+  
   def self.search(params)
     tire.search(page: params[:page], per_page: 2) do
       query { string params[:query], default_operator: "AND" } if params[:query].present?
