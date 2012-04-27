@@ -12,4 +12,12 @@ class Article < ActiveRecord::Base
       sort {by :published_at, "desc" } if params[:query].blank?
     end
   end
+  
+  def to_indexed_json
+    to_json(methods: [:author_name])
+  end
+  
+  def author_name
+    author.name
+  end
 end
