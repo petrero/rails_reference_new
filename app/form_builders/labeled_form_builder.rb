@@ -21,6 +21,17 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
   
+  def collection_check_boxes(attribute, records, record_id, record_name)
+    content_tag :div, class: "field" do
+      @template.hidden_field_tag("#{object_name}[#{attribute}][]") + 
+      records.map do |record|
+        element_id = "#{object_name}_#{attribute}_#{record.send(record_id)}"
+        checkbox = @template.check_box_tag("#{object_name}[#{attribute}][]", record.send(record_id), object.send(attribute).include?(record.send(record_id)), id: element_id)
+        checkbox + " " + @template.label_tag(element_id, record.send(record_name))
+      end.join(tag(:br)).html_safe
+    end  
+  end
+  
   def error_messages
     if object.errors.full_messages.any?
       content_tag(:div, :class=> "error_messages") do
