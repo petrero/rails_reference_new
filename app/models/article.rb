@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
     tire.search(load: true) do
       query { string params[:query], default_operator: "AND" } if params[:query].present?
       filter :range, published_at: {lte: Time.zone.now }
+      sort {by :published_at, "desc" } if params[:query].blank?
     end
   end
 end
