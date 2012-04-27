@@ -17,7 +17,8 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
   private
     def field_label(name, *args)
       options = args.extract_options!
-      label(name, options[:label])
+      required = object.class.validators_on(name).any? {|v| v.kind_of? ActiveModel::Validations::PresenceValidator }
+      label(name, options[:label], class: ("required" if required))
     end
     
     def objectify_options(options)
