@@ -7,4 +7,10 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
       end   
     end
   end
+  
+  def check_box(name, *args)
+    @template.content_tag :div, class: "field" do
+      super + " " + label(name)
+    end
+  end
 end
