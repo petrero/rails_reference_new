@@ -1,0 +1,4 @@
+http://elasticsearch.org/guide/reference/query-dsl/query-string-query.html
+http://elasticsearch.org/guide/reference/mapping/core-types.html
+http:////elasticsearch.org/guide/reference/index-modules/analysis/
+https://github.com/karmi/tire
