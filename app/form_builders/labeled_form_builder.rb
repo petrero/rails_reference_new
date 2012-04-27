@@ -19,4 +19,8 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
       options = args.extract_options!
       label(name, options[:label])
     end
+    
+    def objectify_options(options)
+      super.except(:label)
+    end
 end
