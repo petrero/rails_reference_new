@@ -11,11 +11,11 @@
 <% @articles.each do |article| %>
   <h2>
     <%= link_to article.name, article %>
-    <span class="comments">(<%= pluralize(article.comments.size, 'comment') %>)</span>
+    <span class="comments">(<%= pluralize(article.comments_count, 'comment') %>)</span>
   </h2>
   <div class="info">
-    by <%= article.author.name %>
-    on <%= article.published_at.strftime('%b %d, %Y') %>
+    by <%= article.author_name %>
+    on <%= article.published_at.to_time.strftime('%b %d, %Y') %>
   </div>
   <div class="content"><%= article.content %></div>
 <% end %>
