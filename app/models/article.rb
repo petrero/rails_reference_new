@@ -28,6 +28,7 @@ class Article < ActiveRecord::Base
       facet "authors" do
         terms :author_id
       end
+      raise to_curl
     end
   end
   
