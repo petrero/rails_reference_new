@@ -15,6 +15,12 @@ class LabeledFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
   
+  def submit(*args)
+    content_tag :div, class: "actions" do
+      super
+    end
+  end
+  
   def error_messages
     if object.errors.full_messages.any?
       content_tag(:div, :class=> "error_messages") do
