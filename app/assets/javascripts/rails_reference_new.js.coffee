@@ -3,7 +3,9 @@ window.RailsReferenceNew =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
+  init: -> 
+    new RailsReferenceNew.Routers.Entries()
+    Backbone.history.start()
 
 $(document).ready ->
   RailsReferenceNew.init()
