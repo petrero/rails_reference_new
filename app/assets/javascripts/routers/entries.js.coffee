@@ -5,7 +5,8 @@ class RailsReferenceNew.Routers.Entries extends Backbone.Router
     
     
   index: ->
-    alert "home page"
+    view = new RailsReferenceNew.Views.EntriesIndex()
+    $('#container').html(view.render().el)
     
   show: (id)->
     alert "Entry #{id}"
