@@ -5,7 +5,7 @@ window.RailsReferenceNew =
   Routers: {}
   init: -> 
     new RailsReferenceNew.Routers.Entries()
-    Backbone.history.start()
+    Backbone.history.start(pushState: true)
 
 $(document).ready ->
   RailsReferenceNew.init()
