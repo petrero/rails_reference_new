@@ -21,5 +21,16 @@ class RailsReferenceNew.Views.EntriesIndex extends Backbone.View
     
   createEntry: (event) ->
     event.preventDefault()
-    @collection.create name: $('#new_entry_name').val()
-    $('#new_entry')[0].reset()
+    attributes = name: $('#new_entry_name').val()
+    @collection.create attributes,
+      success: -> $('#new_entry')[0].reset()
+      error: @handleError
+   
+  
+  handleError: (entry, response) ->
+    if response.status == 422
+      errors = $.parseJSON(response.responseText).errors    
+      for attribute, messages of errors
+        alert "#{attribute} #{message}" for message in messages
+        
+    
