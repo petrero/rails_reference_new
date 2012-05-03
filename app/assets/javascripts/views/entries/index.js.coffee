@@ -16,7 +16,7 @@ class RailsReferenceNew.Views.EntriesIndex extends Backbone.View
     this
     
   appendEntry: (entry) ->
-    view = new RailsReferenceNew.Views.Entry() 
+    view = new RailsReferenceNew.Views.Entry(model: entry) 
     $('#entries').append(view.render().el)  
     
   createEntry: (event) ->

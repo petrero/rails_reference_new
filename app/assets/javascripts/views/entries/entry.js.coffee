@@ -4,7 +4,7 @@ class RailsReferenceNew.Views.Entry extends Backbone.View
   tagName: 'li'
   
   render: ->
-    $(@el).html(@template())
+    $(@el).html(@template(entry: @model))
     this
     
   
