@@ -6,7 +6,7 @@ class RailsReferenceNew.Routers.Entries extends Backbone.Router
   
   initialize: ->
     @collection = new RailsReferenceNew.Collections.Entries()
-    @collection.fetch()
+    @collection.reset($('#container').data('entries'))
       
   index: ->
     view = new RailsReferenceNew.Views.EntriesIndex(collection: @collection)
