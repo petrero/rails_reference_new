@@ -11,8 +11,13 @@ class RailsReferenceNew.Views.EntriesIndex extends Backbone.View
     @collection.on('add', @render, this)
   
   render: ->
-    $(@el).html(@template(entries: @collection))
+    $(@el).html(@template())
+    @collection.each(@appendEntry)
     this
+    
+  appendEntry: (entry) ->
+    view = new RailsReferenceNew.Views.Entry() 
+    $('#entries').append(view.render().el)  
     
   createEntry: (event) ->
     event.preventDefault()
