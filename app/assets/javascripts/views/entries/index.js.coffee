@@ -4,6 +4,7 @@ class RailsReferenceNew.Views.EntriesIndex extends Backbone.View
   
   events:
     'submit #new_entry': 'createEntry'
+    'click #draw': 'drawWinner'
     
     
   initialize: ->
@@ -17,7 +18,12 @@ class RailsReferenceNew.Views.EntriesIndex extends Backbone.View
     
   appendEntry: (entry) ->
     view = new RailsReferenceNew.Views.Entry(model: entry) 
-    $('#entries').append(view.render().el)  
+    $('#entries').append(view.render().el) 
+    
+  
+  drawWinner: (event) ->
+    event.preventDefault() 
+    @collection.drawWinner()
     
   createEntry: (event) ->
     event.preventDefault()
